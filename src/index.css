@@ -112,12 +112,36 @@
     box-shadow: 0 0 20px hsl(var(--neon-purple) / 0.2);
   }
 
+  /* Unified player container — desktop only */
+  .unified-player-container {
+    border: 1px solid hsl(var(--neon-purple) / 0.3);
+    background: hsl(var(--glass-bg) / 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 0 30px hsl(var(--neon-purple) / 0.15), 0 0 60px hsl(var(--neon-purple) / 0.05);
+  }
+
+  /* Unified playlist container — desktop only */
+  .unified-playlist-container {
+    border: 1px solid hsl(var(--neon-purple) / 0.3) !important;
+    background: hsl(var(--glass-bg) / 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 0 30px hsl(var(--neon-purple) / 0.15), 0 0 60px hsl(var(--neon-purple) / 0.05);
+  }
+
   .volume-slider {
     -webkit-appearance: none;
     appearance: none;
-    background: hsl(var(--muted) / 0.5);
+    background: transparent;
     border-radius: 9999px;
     outline: none;
+    height: 6px;
+  }
+  .volume-slider::-webkit-slider-runnable-track {
+    height: 6px;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, hsl(var(--neon-blue)), hsl(var(--neon-blue) / 0.3));
   }
   .volume-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -130,6 +154,11 @@
     cursor: pointer;
     margin-top: -3px;
   }
+  .volume-slider::-moz-range-track {
+    height: 6px;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, hsl(var(--neon-blue)), hsl(var(--neon-blue) / 0.3));
+  }
   .volume-slider::-moz-range-thumb {
     width: 12px;
     height: 12px;
@@ -138,15 +167,5 @@
     box-shadow: 0 0 8px hsl(var(--neon-blue) / 0.6);
     cursor: pointer;
     border: none;
-  }
-  .volume-slider::-webkit-slider-runnable-track {
-    height: 6px;
-    border-radius: 9999px;
-    background: linear-gradient(90deg, hsl(var(--neon-blue)), hsl(var(--neon-blue) / 0.3));
-  }
-  .volume-slider::-moz-range-track {
-    height: 6px;
-    border-radius: 9999px;
-    background: linear-gradient(90deg, hsl(var(--neon-blue)), hsl(var(--neon-blue) / 0.3));
   }
 }
