@@ -78,19 +78,19 @@ const Index = () => {
       {/* Sticky top section */}
       <div className="sticky top-0 z-50 glass-panel border-b neon-border-solid">
         {/* Header */}
-        <header className="flex items-center justify-between px-4 md:px-8 py-3 md:py-4 border-b border-muted/30">
+        <header className="flex items-center justify-between px-4 md:px-12 py-3 md:py-4 border-b border-muted/30">
           <div className="flex items-center gap-3">
             <img src={logo} alt="MagicBlock Records" className="h-8 md:h-12 w-auto" />
           </div>
-          <span className="text-muted-foreground md:text-neon-purple text-xs md:text-base md:font-semibold md:tracking-wide transition-all duration-300 neon-hover-glow cursor-default">
+          <span className="text-muted-foreground md:text-neon-purple text-xs md:text-sm md:font-medium md:tracking-wide transition-all duration-300 cursor-default md:opacity-40 md:hover:opacity-100 neon-hover-glow">
             Created by Agrobaks
           </span>
         </header>
 
         {/* Control Center */}
-        <div className="flex flex-col md:flex-row gap-3 md:gap-4 p-3 md:p-4">
+        <div className="flex flex-col md:flex-row gap-3 md:gap-0 p-3 md:px-12 md:py-5 md:justify-between">
           {/* Left: Player Controls */}
-          <div className="w-full md:w-[45%] flex-shrink-0 p-5 md:p-5 border border-muted/30 neon-border-solid rounded-lg flex flex-col justify-between md:max-h-[360px]">
+          <div className="w-full md:w-[42%] flex-shrink-0 p-5 md:p-5 border border-muted/30 neon-border-solid rounded-lg flex flex-col justify-between md:max-h-[340px]">
             {/* Cover + Info */}
             <div className="flex gap-4 md:gap-5">
               <div className="relative flex-shrink-0">
@@ -109,7 +109,7 @@ const Index = () => {
 
             {/* Controls row */}
             <div className="flex items-center gap-5 md:gap-6 mt-5 md:mt-8 w-full">
-              <button onClick={handlePrev} className="text-muted-foreground hover:text-foreground transition-colors">
+              <button onClick={handlePrev} className="text-muted-foreground hover:text-foreground transition-colors md:text-neon-purple md:drop-shadow-[0_0_6px_hsl(260,100%,65%,0.5)] md:hover:drop-shadow-[0_0_12px_hsl(260,100%,65%,0.8)]">
                 <SkipBack size={20} className="md:w-6 md:h-6" />
               </button>
               <button
@@ -118,7 +118,7 @@ const Index = () => {
               >
                 {isPlaying ? <Pause size={18} className="md:w-6 md:h-6" /> : <Play size={18} className="ml-0.5 md:w-6 md:h-6" />}
               </button>
-              <button onClick={handleNext} className="text-muted-foreground hover:text-foreground transition-colors">
+              <button onClick={handleNext} className="text-muted-foreground hover:text-foreground transition-colors md:text-neon-purple md:drop-shadow-[0_0_6px_hsl(260,100%,65%,0.5)] md:hover:drop-shadow-[0_0_12px_hsl(260,100%,65%,0.8)]">
                 <SkipForward size={20} className="md:w-6 md:h-6" />
               </button>
               <div className="flex items-center gap-2 md:gap-3 ml-auto mr-4">
@@ -130,6 +130,7 @@ const Index = () => {
                   value={muted ? 0 : volume}
                   onChange={(e) => { setVolume(parseFloat(e.target.value)); setMuted(false); }}
                   className="w-20 md:w-28 h-1 md:h-1.5 volume-slider cursor-pointer"
+                  style={{ background: `linear-gradient(to right, hsl(260 100% 65%) ${(muted ? 0 : volume) * 100}%, hsl(0 0% 20%) ${(muted ? 0 : volume) * 100}%)`, borderRadius: '9999px' }}
                 />
               </div>
             </div>
@@ -145,8 +146,8 @@ const Index = () => {
           </div>
 
           {/* Right: Video Player */}
-          <div className="w-full md:w-[55%] flex-shrink-0 border border-muted/30 neon-border-solid rounded-lg overflow-hidden video-container-glow md:max-h-[360px]">
-            <div className="aspect-video md:h-full md:aspect-auto">
+          <div className="w-full md:w-[42%] flex-shrink-0 border border-muted/30 neon-border-solid rounded-lg overflow-hidden video-container-glow">
+            <div className="aspect-video">
               <ReactPlayer
                 ref={playerRef}
                 src={track.videoUrl}
